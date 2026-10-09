@@ -1,0 +1,13 @@
+CREATE OR REPLACE PROCEDURE SEARCH_EMP_BY_ID (
+    p_empno IN EMP.EMPNO%TYPE,
+    p_ename OUT EMP.ENAME%TYPE
+) AS
+BEGIN
+    SELECT ENAME INTO p_ename
+    FROM EMP
+    WHERE EMPNO = p_empno;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20005, 'Employee ID ' || p_empno || ' does not exist.');
+END;
+/

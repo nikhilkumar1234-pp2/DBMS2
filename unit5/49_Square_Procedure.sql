@@ -1,0 +1,13 @@
+CREATE OR REPLACE FUNCTION CALC_SQUARE (p_val IN NUMBER) 
+RETURN NUMBER IS
+BEGIN
+    RETURN POWER(p_val, 2);
+END;
+/
+DECLARE
+    v_ans NUMBER;
+BEGIN
+    v_ans := CALC_SQUARE(12);
+    DBMS_OUTPUT.PUT_LINE('Result via PL/SQL: ' || v_ans);
+END;
+/
